@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block title %}Index{% endblock %}
+
+{% block body %}
+<div class="container my-4">
+  <center>
+    <h2>Employees</h2>
+  </center>
+  <div class="content">
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">ID</th>
+          <th scope="col">Name</th>
+          <th scope="col">Actions</th>
+
+
+        </tr>
+      </thead>
+      <tbody>
+        {% for i in employees %}
+        <tr>
+
+          <td>{{i.id}}</td>
+          <td>{{i.firstname}}</td>
+          <td><a class="btn btn-info" href="/update/{{i.id}}">Update</a><a class="btn btn-danger mx-2"
+              href="/delete/{{i.id}}">Delete</a></td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    <div class="container my-5">
+      <center><h2>Add new employee</h2></center>
+      <form action="/" method="POST">
+        <input type="text" class="form-control" name="content" id="content">
+        <input type="submit" class="btn btn-success my-2" value="add employee">
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock %}
